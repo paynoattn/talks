@@ -1,0 +1,23 @@
+{
+  "name": "decorator-talk",
+  "version": "1.0.0",
+  "description": "Decorator talk",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/paynoattn/talks.git"
+  },
+  "author": "Chris Pawlukiewicz <hi@paynoattn.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paynoattn/talks/issues"
+  },
+  "homepage": "https://github.com/paynoattn/talks#readme",
+  "dependencies": {
+    "@types/node": "^10.5.2",
+    "typescript": "^2.9.2"
+  }
+}
