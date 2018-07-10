@@ -4,7 +4,8 @@
   "description": "Decorator talk",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "build:watch": "npm run build -- -w"
   },
   "repository": {
     "type": "git",
