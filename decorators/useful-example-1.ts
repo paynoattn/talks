@@ -14,5 +14,5 @@ class User {
 }
 
 const user = new User();
-console.log(Reflect.getMetadata(reflect_key, User, 'firstName'));
-console.log(Reflect.getMetadata('design:type', User, 'firstName'));
+console.log(Reflect.getMetadata(reflect_key, User.prototype, 'firstName'));
+console.log(Reflect.getMetadata('design:type', User.prototype, 'firstName'));
