@@ -30,4 +30,3 @@ console.log(dude);
 
 const notdude = new Nerd();
 console.log(notdude);
-

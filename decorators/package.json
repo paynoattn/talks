@@ -4,8 +4,10 @@
   "description": "Decorator talk",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "npm run build -- -w"
+    "build:tsc": "tsc",
+    "build:tsc:watch": "npm run build:tsc -- -w",
+    "build:babel": "babel",
+    "build:babel:watch": "npm run build:babel -- -w"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   "homepage": "https://github.com/paynoattn/talks#readme",
   "dependencies": {
     "@types/node": "^10.5.2",
+    "reflect-metadata": "^0.1.12",
     "typescript": "^2.9.2"
   }
 }
