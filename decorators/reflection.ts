@@ -11,8 +11,17 @@ function required(target: any, propertyKey: string) {
 class User {
   @required
   firstName: string;
+
+  private _id: number;
+
+  constructor(id: number) { }
+
+  method(dude: string) {
+    return dude;
+  }
 }
 
-const user = new User();
+const user = new User(1);
 console.log(Reflect.getMetadata(reflect_key, User.prototype, 'firstName'));
 console.log(Reflect.getMetadata('design:type', User.prototype, 'firstName'));
+console.log(Reflect.getMetadata('design:type', User.prototype, 'id'));

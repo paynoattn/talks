@@ -3,11 +3,11 @@ function a(target) {
 }
 
 function b(target, propertyKey) {
-  console.log('b', target);
+  console.log('b');
 }
 
 function c(target, propertyKey, propertyDescriptor) {
-  console.log('c', propertyKey, propertyDescriptor);
+  console.log('c');
 }
 
 @a
