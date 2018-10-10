@@ -9,14 +9,11 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(morgan('dev'));
 
-const { generateBody } = require('./helpers/html');
+const { generateRedirectPage } = require('./helpers/html');
 
 app.get('/', (req, res) => {
   // TODO: add logic to not redirect when the auth token is present.
-  const headString = `
-    <meta http-equiv="refresh" content="0; URL='/auth'" />
-  `;
-  const page = generateBody(headString, '');
+  const page = generateRedirectPage();
   res.send(page);
 });
 
