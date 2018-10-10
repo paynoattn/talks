@@ -22,11 +22,14 @@ function generateRedirectPage() {
 }
 
 function generateLoginPage(error = false) {
-  const head = `<title> Login Page </title>`;
+  const head = `
+    <title> Login Page </title>
+    <script src="/public/auth_fns.js"></script>
+  `;
   const body = `
   Signin page
   ${error ? '<h1 style="color:red;">Error, invalid login</h1>' : ''}
-    <form id="login_page">
+    <form id="login">
       <label>
         user name
         <input type="text" id="user_name">
@@ -35,12 +38,14 @@ function generateLoginPage(error = false) {
         password
         <input type="text" id="password">
       </label>
-      <button onclick="loginsimple()">Simple Login</button>
-      <button onclick="loginsecret()">Secret JWT Login</button>
-      <button onclick="loginpubpriv()">Public Private Key</button>
+      <button type="button" onclick="login()">Awesome Secure JWT Login Button</button>
     </form>
   `;
+  return generateBody(head, body);
 }
 
-module.exports = { generateBody };
-
+module.exports = { 
+  generateBody,
+  generateRedirectPage,
+  generateLoginPage
+};

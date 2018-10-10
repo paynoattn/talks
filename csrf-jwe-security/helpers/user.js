@@ -6,7 +6,7 @@ const mockUser = {
   rights: ['write_js', 'write_css', 'write_html']
 };
 
-const { generateLoginPage  } = require('./html');
+const { generateLoginPage } = require('./html');
 
 function validateLoggedIn(req, res, next) {
   if (req.token.data && req.token.data.loggedin) {
@@ -18,11 +18,22 @@ function validateLoggedIn(req, res, next) {
   }
 }
 
-function validateUser(user) {
+function validateUser(req, res, next) {
+  if (!req.body || !req.body.user || !req.body.password) {
+    res.status(401);
+    res.json({ error: 'unauthorized' });
+  }
+  const user = req.body;
   if (user.username === mockUser.username && user.password === mockUser.password) {
-    return mockUser;
+    next();
   } else {
-    throw new Error('Invalid user');
+    res.status(401);
+    res.json({ error: 'unauthorized' });
   }
 }
 
+module.exports = {
+  mockUser,
+  validateLoggedIn,
+  validateUser
+};

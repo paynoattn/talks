@@ -17,17 +17,19 @@ app.get('/', (req, res) => {
   res.send(page);
 });
 
+app.use('/public', express.static(__dirname + '/public'));
+
 // auth router for setting and recieving jwt token
 const { authRouter } = require('./auth');
 app.use('/auth', authRouter);
 
 // import the jwt secret router for showing how to use jwts with secrets
-const { jwtSecretRouter } = require('./jwt-secret');
-app.use('/auth/secret', jwtSecretRouter);
+// const { jwtSecretRouter } = require('./jwt-secret');
+// app.use('/auth/secret', jwtSecretRouter);
 
 // import the jwt key router for showing how to use jwts signed by certs
-const { jwtKeyRouter } = require('./jwt-key');
-app.use('/auth/key', jwtKeyRouter);
+// const { jwtKeyRouter } = require('./jwt-key');
+// app.use('/auth/key', jwtKeyRouter);
 
 const port = process.env.APP_PORT || 5000;
 

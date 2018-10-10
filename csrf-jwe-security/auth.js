@@ -11,7 +11,6 @@ const jwtHelper = new JWTHelper(JWT_SECRET);
 const { generateLoginPage } = require('./helpers/html');
 
 authRouter.get('/', async(req, res) => {
-  const csrf = await jwtHelper.generateToken({ time: Date.now() });
   const page = generateLoginPage();
   res.send(page);
 });
