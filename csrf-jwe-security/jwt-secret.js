@@ -1,15 +1,15 @@
 const express = require('express');
 const jwtSecretRouter = express.Router();
 
-const { JWTHelper } = require('./helpers/jwt');
+const { generateHome } = require('./helpers/html');
 const { JWT_SECRET } = require('./secrets/jwt_secret');
-const authHelpers = require('./helpers/user');
+const { UserHelper } = require('./helpers/user');
+const userHelper = new UserHelper(JWT_SECRET);
 
-const jwtHelper = new JWTHelper(JWT_SECRET);
-
-jwtSecretRouter.post('/', authHelpers.validateUser, (req, res) => {
-  // do some things
+jwtSecretRouter.post('/', userHelper.signInUser.bind(userHelper));
+jwtSecretRouter.get('/home', userHelper.verifyAuthToken.bind(userHelper), (req, res) => {
+  const page = generateHome(req.user);
+  res.send(page);
 });
-
 
 module.exports = { jwtSecretRouter };

@@ -1,5 +1,5 @@
 const express = require('express');
-const authRouter = express.Router();
+const loginRouter = express.Router();
 
 const fs = require('fs');
 
@@ -10,9 +10,12 @@ const jwtHelper = new JWTHelper(JWT_SECRET);
 
 const { generateLoginPage } = require('./helpers/html');
 
-authRouter.get('/', async(req, res) => {
+loginRouter.get('/', async(req, res) => {
+  // generate a csrf token for validating token came from out site
+  const csrf = await jwtHelper.generateToken({ loggedIn: false });
+  res.cookie('csrf', csrf);
   const page = generateLoginPage();
   res.send(page);
 });
 
-module.exports = { authRouter };
+module.exports = { loginRouter };

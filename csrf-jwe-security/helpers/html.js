@@ -33,19 +33,25 @@ function generateLoginPage(error = false) {
       <label>
         user name
         <input type="text" id="user_name">
-      </label>
+      </label> <br />
       <label>
         password
         <input type="text" id="password">
-      </label>
-      <button type="button" onclick="login()">Awesome Secure JWT Login Button</button>
+      </label> <br />
+      <button class="login_button" type="button" onclick="login(true)">Awesome Secure JWT Login Button</button> <br />
+      <button class="login_button" type="button" onclick="login(false)">Super Secret JWT Login Button</button>
     </form>
   `;
   return generateBody(head, body);
 }
 
+function generateHome(user) {
+  return generateBody(`<title>Home</title>`, `<h1>Welcome home ${user.username}`);
+}
+
 module.exports = { 
   generateBody,
+  generateHome,
   generateRedirectPage,
   generateLoginPage
 };
