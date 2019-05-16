@@ -1,0 +1,26 @@
+version: "3"
+services:
+
+  app:
+    build: .
+    networks:
+      - my_app
+    ports: 
+      - "5000:5000"
+    volumes: 
+      - ./src:/home/node/src
+    environment: 
+      - DB_HOST=app-db
+
+  app-db:
+    image: postgres
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: password
+    networks:
+      - my_app
+
+networks:
+  my_app:
+    driver: bridge
